@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import DataToDisplay from './components/DataToDisplay';
+import Map from './components/Map'
+import Modal from './components/UI/Modal';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { modalsActions } from './store';
+import './App.css'
+import { Route, Routes } from 'react-router-dom';
+import Nav from './components/Layout/Nav';
 
 function App() {
+  const dispatch = useDispatch();
+  const isDataDiplay = useSelector(state => state.modals.dataDisplay)
+
+  const closeHandler = () => {
+    dispatch(modalsActions.toggle())
+  }
+
+  const mapContent = <>
+    {isDataDiplay ?
+      <Modal onClick={closeHandler}>
+        <DataToDisplay />
+      </Modal> : <></>}
+    <Map />
+  </>
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Nav></Nav>
+      <Routes>
+        <Route path='/' element={mapContent} />
+        <Route path='/history' element={<>HISTORY</>} />
+      </Routes>
+    </>
   );
 }
 
