@@ -1,5 +1,5 @@
-import styles from './dataToDisplay.module.css'
-import { modalsActions } from '../store'
+import styles from './DataToDisplay.module.css'
+import { modalsActions } from '../../store'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 
@@ -9,7 +9,9 @@ const DataToDisplay = () => {
 
     const closeHandler = () => {
         dispatch(modalsActions.toggle())
+        dispatch(modalsActions.toggleLoading())
     }
+    
     return (
         <div className={styles.container}>
             <h1>Weather in picked location</h1>
