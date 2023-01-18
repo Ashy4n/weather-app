@@ -4,7 +4,6 @@ import styles from './Nav.module.css'
 const Nav = () => {
     const NavLinkStyle = ({ isActive }) => isActive ? styles.active + " " + styles.NavLink : styles.NavLink 
    
-    console.log(NavLinkStyle)
     return (
         <div className={styles.container}>
             <NavLink className={NavLinkStyle} to='/'>Weather Map</NavLink>

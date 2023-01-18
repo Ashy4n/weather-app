@@ -24,27 +24,31 @@ const dataToDisplay = createSlice({
     }
 })
 
-const marker = createSlice({
-    name: 'marker',
-    initialState: { lat: 52.04, lng: 19.28 },
+const history = createSlice({
+    name: 'history',
+    initialState: { pageNum: 1, allQueries:null },
     reducers: {
-        setMarker(state, action) {
-            state.lat = action.payload.lat
-            state.lon = action.payload.lon
+        setPageNum(state,action) {
+            state.pageNum = action.payload;
         },
+          setAllQueries(state,action) {
+            state.allQueries = action.payload;
+        }
     }
 })
+
+
 
 const store = configureStore({
     reducer: {
         modals: modals.reducer,
         dataToDisplay: dataToDisplay.reducer,
-        marker:marker.reducer
+        history: history.reducer
     }
 });
 
 export const modalsActions = modals.actions;
 export const dataActions = dataToDisplay.actions;
-export const markerActions = marker.actions;
+export const historyActions = history.actions;
 
 export default store;

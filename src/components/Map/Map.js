@@ -27,8 +27,7 @@ const Map = () => {
     const ResponseHandler = async (marker) => {
         dispatch(modalsActions.toggleLoading())
         const res = await useWheaterAPI(marker);
-        const dbres = await useDB(marker);
-        console.log(dbres);
+        await useDB(marker);
         dispatch(modalsActions.toggle())
         dispatch(dataActions.saveData(res))
     }
