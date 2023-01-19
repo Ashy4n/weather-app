@@ -1,0 +1,29 @@
+.headerContainer{
+    font-size:1.7rem;
+    color: purple;
+    text-transform: uppercase;
+    font-weight: 700;
+    position: sticky;
+    top:0px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(207, 148, 217, 0.595);
+    width: 95%;
+    margin: auto;
+    padding:  30px 20px;
+    border-bottom: 5px solid purple;
+    border-radius: 15px;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.626);
+}
+.bodyContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2rem;
+    overflow: scroll;
+    height: 43vh;
+}
+.container{
+    width: 100%;
+}

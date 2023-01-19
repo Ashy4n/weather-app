@@ -1,10 +1,10 @@
 import Stats from "./History/Stats"
-import Table from "./History/Table"
+import MultiTable from "./History/MultiTable"
 
 const History = () => {
  return(
    <>
-   <Table/>
+   <MultiTable/>
    <Stats/>
    </>
  )

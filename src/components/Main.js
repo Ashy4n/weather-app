@@ -4,11 +4,19 @@ import Modal from "./UI/Modal";
 import React from "react";
 import DataToDisplay from "./DataToDiplay/DataToDisplay";
 import Loader from "./UI/Loader"
+import { useDispatch } from 'react-redux'
+import { modalsActions } from '../store'
 
 const Main = () => {
     const dataDisplay = useSelector(state=> state.modals.dataDisplay);
     const isLoading = useSelector(state=> state.modals.isLoading);
+    const dispatch = useDispatch();
 
+    const closeHandler = () => {
+        dispatch(modalsActions.toggle())
+        dispatch(modalsActions.toggleLoading())
+    }
+  
     const isLoadingJSX = (
     <>
     <Modal>
@@ -18,7 +26,7 @@ const Main = () => {
     )
     const dataReadyToDisplayJSX = (
         <>
-        <Modal>
+        <Modal onClick={closeHandler}>
           <DataToDisplay/>
         </Modal>
         </>

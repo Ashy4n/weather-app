@@ -25,6 +25,7 @@ const Stats = () => {
             <div className={styles.table}>
                 <h3>Temperature</h3>
                 <table>
+                    <tbody>
                     <tr>
                         <th>MAX</th>
                         <th>MIN</th>
@@ -35,6 +36,8 @@ const Stats = () => {
                         <td>{data.temperature.min}</td>
                         <td>{Math.round((data.temperature.avg + Number.EPSILON) * 100) / 100}</td>
                     </tr>
+                    </tbody>
+                
                 </table>
             </div>
             <div className={styles.table}>
@@ -55,5 +58,4 @@ const Stats = () => {
         </div>
     )
 }
-export default Stats    
-// 
+export default Stats

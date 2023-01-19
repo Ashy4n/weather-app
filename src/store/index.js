@@ -37,8 +37,6 @@ const history = createSlice({
     }
 })
 
-
-
 const store = configureStore({
     reducer: {
         modals: modals.reducer,

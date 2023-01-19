@@ -1,9 +1,9 @@
-import { DistanceMatrixService, GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+import {  GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 import { useState } from "react";
 import styles from './Map.module.css'
 import useWheaterAPI from "../../hooks/useWheaterAPI";
-import { useDispatch, useSelector } from 'react-redux';
-import { modalsActions, dataActions, markerActions } from "../../store";
+import { useDispatch} from 'react-redux';
+import { modalsActions, dataActions} from "../../store";
 import useDB from "../../hooks/useDB";
 import Loader from "../UI/Loader";
 
@@ -27,9 +27,13 @@ const Map = () => {
     const ResponseHandler = async (marker) => {
         dispatch(modalsActions.toggleLoading())
         const res = await useWheaterAPI(marker);
-        await useDB(marker);
+        const dbData = await useDB(marker);
         dispatch(modalsActions.toggle())
-        dispatch(dataActions.saveData(res))
+        dispatch(dataActions.saveData({
+            ...res,
+            responseTime: dbData.responseTime,
+            city: dbData.resData.city
+        }))
     }
 
     if (!isLoaded) {
